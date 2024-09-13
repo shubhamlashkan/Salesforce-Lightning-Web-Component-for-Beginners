@@ -1,0 +1,65 @@
+<template>
+
+    <lightning-card >
+        <div class="slds-p-around_medium">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_3-of-12">
+                    <lightning-vertical-navigation onselect={fetchIdeasByCategory}  selected-item={selectedItem}>
+                        <lightning-vertical-navigation-section label="Categories">
+                            <template for:each={categoryOptions} for:item="category">
+                            <lightning-vertical-navigation-item label={category} name={category} key={category}></lightning-vertical-navigation-item>
+                            </template>
+                        </lightning-vertical-navigation-section>
+                    </lightning-vertical-navigation>
+                </div>
+                <div class="slds-col slds-size_9-of-12">
+                    <lightning-card>
+                        <lightning-layout multiple-rows>
+                            <template for:each={tweetIdeas} for:item="tweetIdea">
+                            <lightning-layout-item key={tweetIdea.id}>
+                                <div class="slds-m-right_medium slds-m-top_medium slds-p-around_medium shadow">
+                                <div class="enlarge"> 
+                                    <lightning-layout>
+                                    <lightning-layout-item>
+                                        <lightning-icon icon-name="standard:people" alternative-text="people" title="people"></lightning-icon>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item padding="around-small">
+                                            <p class="name">User <span>@user</span></p>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+
+                                <p class="tweet-text"> {tweetIdea.Tweet_Text__c}</p>
+                                <div class="slds-p-top_small">
+                                <lightning-layout>
+                                    <lightning-layout-item padding="around-small">
+                                        <lightning-button variant="brand" label="save" icon-name="utility:add" icon-position="left" onclick={handleSave} class="save" data-id={tweetIdea.id} data-text={tweetIdea.Tweet_Text__c}>    </lightning-button>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item padding="around-small">
+                                        
+                                            <lightning-button variant="brand" label="copy" icon-name="action:clone" icon-position="left" onclick={handleCopy} class="copy" data-id={tweetIdea.id} data-text={tweetIdea.Tweet_Text__c}>    </lightning-button>
+                                        </lightning-layout-item>
+                                    <lightning-layout-item padding="around-small">
+                                        <lightning-button variant="brand" label="post" icon-name="standard:post" icon-position="left" onclick={handlePost} class="post" data-id={tweetIdea.id} data-text={tweetIdea.Tweet_Text__c}>    </lightning-button>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </div>
+
+                            </div>
+                            </div>
+                            </lightning-layout-item>
+                        </template>
+                        </lightning-layout>
+                    </lightning-card>
+                    
+                        
+                </div>
+            </div>
+        </div>    
+       
+        
+    
+    </lightning-card>
+    
+
+    <c-modal-popup content="Text copied to clipboard!" is-open={isShowModal} onclose={handleCloseModal}></c-modal-popup>
+</template>

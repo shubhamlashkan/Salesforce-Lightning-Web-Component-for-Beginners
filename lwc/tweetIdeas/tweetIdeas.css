@@ -1,0 +1,39 @@
+
+.shadow{
+    border-radius: 5px;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width:350px;
+}
+
+.enlarge{
+    transition: width 1s, height 1s, transform 1s;
+}
+
+.enlarge:hover{
+    transform: scale(1.1,1.1);
+}
+
+.name{
+    color:#566a7f;
+    font-size:14px;
+}
+
+.tweet-text{
+    font-size: medium;
+}
+
+
+.save{
+    --slds-c-button-brand-color-background:#8592a3;
+    --slds-c-button-brand-color-border:#8592a3;
+}
+
+.copy{
+    --slds-c-button-brand-color-background:#03c3ec;;
+    --slds-c-button-brand-color-border:#03c3ec;;
+}
+
+.post{
+    --slds-c-button-brand-color-background:#696cff;
+    --slds-c-button-brand-color-border:#696cff;
+}
